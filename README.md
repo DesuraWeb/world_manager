@@ -34,21 +34,29 @@ Les contributions sont les bienvenues. N'hésitez pas à soumettre des pull requ
 
 ---
 
-En cours de développement :
-Nous travaillons activement sur les futures améliorations de world_manager pour enrichir encore plus l'expérience de gestion des services d'hébergement et de domaines via l'API de PlanetHoster. Voici un aperçu des fonctionnalités sur lesquelles notre équipe se concentre :
+Future Roadmap
+Voici une esquisse de la future roadmap pour le module "World Manager". Cette roadmap est ouverte aux contributions et aux suggestions. N'hésitez pas à soumettre des pull requests ou à signaler des problèmes via GitHub.
 
-Amélioration de l'Authentification et Gestion de Liste Blanche : Nous prévoyons d'ajouter des options de sécurité supplémentaires pour une authentification plus robuste et une gestion plus flexible de la liste blanche d'adresses IP.
+À Court Terme
+Intégration avec des systèmes de gestion de contenu (CMS): Ajout de la possibilité d'installer, configurer et gérer des CMS populaires tels que WordPress, Joomla, et Drupal directement depuis le module.
 
-Extension des Capacités de Gestion des Domaines : Des fonctionnalités supplémentaires seront introduites pour offrir plus de contrôle sur les opérations liées aux domaines, y compris des options avancées pour le renouvellement et le transfert.
+Amélioration de l'interface utilisateur: Refonte de l'interface utilisateur pour améliorer l'expérience utilisateur, notamment en rendant le module plus intuitif et en ajoutant des guides d'utilisation.
 
-Gestion Avancée des Enregistrements DNS : Nous envisageons d'élargir les capacités de gestion DNS pour inclure une manipulation plus détaillée des enregistrements, facilitant ainsi la personnalisation et l'optimisation de la configuration DNS.
+Support multilingue: Ajout du support pour plusieurs langues dans le module pour atteindre une audience plus large.
 
-Intégration Approfondie avec World API : L'objectif est de fournir une intégration plus poussée avec World API pour une gestion complète des aspects de l'hébergement, incluant des fonctionnalités inédites.
+À Moyen Terme
+Automatisation des tâches de gestion DNS: Développement de fonctionnalités pour automatiser certaines des tâches de gestion DNS les plus courantes, telles que la mise à jour des enregistrements A, MX, et TXT.
 
-Renforcement de la Sécurité : L'ajout de nouvelles mesures de sécurité, y compris une gestion améliorée des clés SSH et des configurations avancées pour les règles du WAF, est prévu pour renforcer la protection des services hébergés.
+Sécurité renforcée: Implémentation de mesures de sécurité supplémentaires pour protéger les données des utilisateurs et des domaines gérés par le module.
 
-Support Élargi pour le CMS et WordPress : Nous travaillons à simplifier davantage l'installation et la gestion de divers CMS, en particulier WordPress, avec des outils et des options de configuration supplémentaires.
+Intégration API tiers: Ajout de la capacité d'intégrer avec d'autres API pour étendre les fonctionnalités du module, comme pour les notifications par email ou SMS.
 
-Analyse de Performance et Statistiques Élargies : Des statistiques plus détaillées et des analyses de performance seront disponibles pour aider les utilisateurs à surveiller et optimiser l'utilisation des ressources.
+À Long Terme
+Déploiement automatique de sites Web: Fonctionnalité permettant aux utilisateurs de déployer automatiquement des sites Web à partir de modèles prédéfinis ou de leur propre code source.
 
-Nous sommes déterminés à améliorer continuellement world_manager et apprécions vos commentaires et suggestions. Restez à l'écoute pour les mises à jour à venir et les annonces de nouvelles fonctionnalités.
+Analytique avancée: Intégration de solutions analytiques pour fournir aux utilisateurs des insights sur la performance de leur site Web, la sécurité, et le trafic.
+
+Support de cloud hybride: Extension du module pour supporter la gestion de ressources hébergées sur différents clouds, permettant une flexibilité maximale en termes de déploiement et d'exploitation.
+
+Contribution
+Les contributions sont les bienvenues. N'hésitez pas à soumettre des pull requests ou à signaler des problèmes via GitHub. Votre aide peut apporter une grande valeur au projet en introduisant de nouvelles fonctionnalités, en trouvant et en corrigeant des bugs, ou simplement en partageant vos idées pour rendre le module encore meilleur.
