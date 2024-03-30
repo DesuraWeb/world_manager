@@ -10,6 +10,12 @@
         font-family: 'Lato', sans-serif;
         color: #333;
     }
+    /* Style pour le titre de la page */
+    .page-title {
+        font-size: 32px; /* Taille de police pour le titre */
+        margin-bottom: 20px; /* Espace en dessous du titre */
+        color: #333; /* Couleur du texte */
+    }
     .panel_s {
         background-color: #fff;
         border: none;
@@ -31,10 +37,10 @@
     .btn-primary:hover {
         background-color: #006644;
     }
-    h4 {
+    h3 {
         margin-bottom: 20px;
     }
-
+    
     /* Additional styles for the text blocks */
     .api-text-blocks {
         display: flex;
@@ -42,7 +48,7 @@
         margin-bottom: 20px;
     }
     .api-text-block {
-        background: #f2f2f2;
+        background: #fff;
         padding: 20px;
         border-radius: 4px;
         flex-basis: 48%;
@@ -57,24 +63,56 @@
             flex-basis: auto;
         }
     }
+    
+    /* Style for the service status indicator */
+    .status-indicator {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 5px;
+    }
+    .status-indicator.operational {
+        background-color: #28a745;
+        box-shadow: 0 0 5px #28a745;
+    }
+    .status-indicator.non-operational {
+        background-color: #dc3545;
+        box-shadow: 0 0 5px #dc3545;
+    }
 </style>
 
 <div id="wrapper">
     <div class="content">
-        <!-- Text blocks added here -->
+        <div class="content">
+        <!-- Titre de la page -->
+        <h1 class="page-title">Paramètres</h1>
         <div class="api-text-blocks">
+            <!-- Block 1: API Domain State and Account Info -->
             <div class="api-text-block">
-                <h4>API Domaine</h4>
-                <p>Avec notre API de domaine, vous pouvez enregistrer, renouveler, transférer et gérer des noms de domaine pour vos clients...</p>
-                <button class="btn btn-primary">Module WHMCS</button>
+                <h3>États des Services</h3>
+                <?php if (isset($is_operational) && $is_operational): ?>
+                    <span class="status-indicator operational"></span> Opérationnel
+                    <!-- Account info display -->
+                    <p>Crédit : <?php echo isset($account_info['account_credit']) ? $account_info['account_credit'] : 'N/A'; ?>€</p>
+                    <p>Nombre de domaines actifs : <?php echo isset($account_info['active_domains']) ? $account_info['active_domains'] : 'N/A'; ?></p>
+                <?php else: ?>
+                    <span class="status-indicator non-operational"></span> Non opérationnel
+                <?php endif; ?>
             </div>
+            
             <div class="api-text-block">
-                <h4>World API</h4>
-                <p>Avec l'API d'hébergement Web World Unlimited, débloquez un monde infini de possibilités...</p>
-                <button class="btn btn-primary">Ajouter des fonds</button>
+                <h3>World API</h3>
+                <p>Avec l'API d'hébergement Web World Unlimited, débloquez un monde infini de possibilités. Vous pouvez créer des comptes d'hébergement World à la volée, automatiser des tâches récurrentes, intégrer des hébergements dans votre propre panneau de contrôle et bien plus encore.</p>
+            </br>
+                <h3>Documentation</h3>
+                <p>Il suffit d'autoriser l'adresse IP qui fera les demandes à l'API. Ensuite, consultez la documentation de l'API pour connaître les différentes méthodes disponibles</p>
+                <a href="https://apidoc.planethoster.com/fr/" class="btn btn-primary">Documentation</a>
+
             </div>
         </div>
 
+        <!-- API Settings Form -->
         <div class="row">
             <div class="col-md-12">
                 <div class="panel_s">

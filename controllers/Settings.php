@@ -7,15 +7,65 @@ class Settings extends AdminController {
         parent::__construct();
         $this->load->helper('url');
         $this->load->library('session');
-        // Assurez-vous que le fichier de configuration soit chargé ici si ce n'est pas déjà fait globalement
         $this->load->config('world_manager/config');
     }
 
     public function index() {
         $data['api_user'] = $this->config->item('api_user');
         $data['api_key'] = $this->config->item('api_key');
+        $data['service_status'] = $this->check_service_status();
+        if ($data['service_status']) {
+            $data['account_info'] = $this->get_account_info();
+        }
         $this->load->view('world_manager/settings', $data);
     }
+
+    private function check_service_status() {
+
+        $url = 'https://api.planethoster.net/reseller-api/test-connection';
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Content-Type:application/json',
+            'X-API-KEY: ' . $this->config->item('api_key'),
+            'X-API-USER: ' . $this->config->item('api_user')
+        ));
+        $result = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+    
+        // Affichez temporairement la réponse brute pour le débogage
+        var_dump($result);
+        var_dump($httpCode);
+        
+        if ($httpCode == 200) {
+            $response = json_decode($result, true);
+            return !empty($response['successful_connection']);
+        }
+        return false;
+    }
+
+    private function get_account_info() {
+        $url = 'https://api.planethoster.net/world-api/accountInfo';
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Content-Type:application/json',
+            'X-API-KEY: ' . $this->config->item('api_key'),
+            'X-API-USER: ' . $this->config->item('api_user')
+        ));
+        $result = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        if ($httpCode == 200 && $result) {
+            $response = json_decode($result, true);
+            return $response;
+        }
+        return false;
+    }
+
 
     public function update_api_settings() {
     $apiUser = $this->input->post('api_user');
