@@ -16,9 +16,14 @@ class Settings extends AdminController {
         $data['service_status'] = $this->check_service_status();
         if ($data['service_status']) {
             $data['account_info'] = $this->get_account_info();
+            // Obtenez les informations supplémentaires et stockez-les dans data
+        $additional_info = $this->get_additional_info();
+        if ($additional_info) {
+            $data['nb_active_or_suspended_accounts'] = $additional_info['nb_active_or_suspended_accounts'];
         }
-        $this->load->view('world_manager/settings', $data);
     }
+        $this->load->view('world_manager/settings', $data);
+}
 
     private function check_service_status() {
 
@@ -65,6 +70,26 @@ class Settings extends AdminController {
         }
         return false;
     }
+
+    private function get_additional_info() {
+    $url = 'https://api.planethoster.net/world-api/get-accounts'; 
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        'Content-Type:application/json',
+        'X-API-KEY: ' . $this->config->item('api_key'),
+        'X-API-USER: ' . $this->config->item('api_user')
+    ));
+    $result = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+    if ($httpCode == 200 && $result) {
+        $response = json_decode($result, true);
+        return $response; // Supposons que cette réponse contient `nb_active_or_suspended_accounts`
+    }
+    return false;
+}
 
 
     public function update_api_settings() {
