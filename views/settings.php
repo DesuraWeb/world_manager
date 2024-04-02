@@ -91,7 +91,7 @@
             <!-- Block 1: API Domain State and Account Info -->
             <div class="api-text-block">
                 <h3>États des Services</h3>
-                <?php if (isset($is_operational) && $is_operational): ?>
+                <?php if (isset($service_status) && $service_status): ?>
                     <span class="status-indicator operational"></span> Opérationnel
                     <!-- Account info display -->
                     <p>Crédit : <?php echo isset($account_info['account_credit']) ? $account_info['account_credit'] : 'N/A'; ?>€</p>

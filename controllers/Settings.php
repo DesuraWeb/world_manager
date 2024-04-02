@@ -47,7 +47,7 @@ class Settings extends AdminController {
     }
 
     private function get_account_info() {
-        $url = 'https://api.planethoster.net/world-api/accountInfo';
+        $url = 'https://api.planethoster.net/reseller-api/account-info';
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HEADER, false);
