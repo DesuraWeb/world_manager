@@ -32,4 +32,8 @@ Pour toute question ou assistance, veuillez ouvrir un ticket sur la page GitHub 
 
 Les contributions sont les bienvenues. N'hésitez pas à soumettre des pull requests ou à signaler des problèmes via GitHub.
 
+## Remerciement
+
+@mercurol-tamel
+
 ---
