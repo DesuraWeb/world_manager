@@ -1,4 +1,4 @@
-# World Manager Module
+# World Manager Module for Perfex CRM
 
 ## Description
 
